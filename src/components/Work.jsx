@@ -16,7 +16,7 @@ const Work = () => {
       title: 'Senior Shopify Full Stack Developer',
       company: 'Function Growth',
       period: '2023 - Present',
-      location: 'Remote',
+      location: 'New York (Remote)',
       highlight: 'Custom apps, Shopify Functions, and checkout extensions for high‑growth brands.',
       tags: ['Custom Apps', 'Functions', 'Checkout Extensions'],
     },
