@@ -1,0 +1,186 @@
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { SiShopify, SiReact, SiTypescript, SiJavascript, SiTailwindcss, SiPhp, SiMysql, SiGit, SiWebpack } from 'react-icons/si'
+import { FaCode, FaShoppingCart, FaCog } from 'react-icons/fa'
+import { GradientText } from './animated/GradientText'
+import { Card } from './ui/card'
+
+const TechStack = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
+  const techCategories = [
+    {
+      category: 'Shopify & E-commerce',
+      icon: FaShoppingCart,
+      color: 'from-green-500 to-emerald-500',
+      skills: [
+        'Shopify',
+        'Shopify Plus',
+        'Shopify Functions',
+        'Liquid',
+        'Shopify Flow',
+        'Klaviyo',
+        'Checkout Extensions',
+      ]
+    },
+    {
+      category: 'Frontend Development',
+      icon: FaCode,
+      color: 'from-blue-500 to-cyan-500',
+      skills: [
+        'React',
+        'TypeScript',
+        'JavaScript',
+        'Tailwind CSS',
+        'SCSS/LESS',
+        'AngularJS',
+        'jQuery',
+        'Bootstrap',
+      ]
+    },
+    {
+      category: 'Backend & APIs',
+      icon: FaCog,
+      color: 'from-purple-500 to-pink-500',
+      skills: [
+        'REST APIs',
+        'Webhooks',
+        'PHP',
+        'MySQL',
+        'Admin API',
+        'GraphQL',
+        'JSON',
+      ]
+    },
+    {
+      category: 'Tools & Workflow',
+      icon: FaCog,
+      color: 'from-orange-500 to-red-500',
+      skills: [
+        'Git',
+        'Webpack',
+        'Gulp',
+        'Agile/Scrum',
+        'Test-Driven Development',
+        'Performance Optimization',
+        'SEO',
+      ]
+    },
+  ]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  }
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  }
+
+  return (
+    <section id="tech-stack" className="section-padding bg-gradient-to-b from-background to-muted/20" ref={ref}>
+      <div className="container-width">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <GradientText>Technical Expertise</GradientText>
+          </h2>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
+            Full-stack capabilities across the Shopify ecosystem and modern web technologies
+          </p>
+        </motion.div>
+
+        {/* Tech Categories Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        >
+          {techCategories.map((category, index) => (
+            <motion.div key={category.category} variants={cardVariants}>
+              <Card className="p-8 h-full hover:shadow-xl transition-all border-primary/10 hover:border-primary/30 bg-card/50 backdrop-blur-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center shadow-lg`}>
+                    <category.icon className="text-white" size={28} />
+                  </div>
+                  <h3 className="text-2xl font-bold">{category.category}</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.span
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={inView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: 0.5 + index * 0.1 + skillIndex * 0.05 }}
+                      whileHover={{ scale: 1.1, y: -2 }}
+                      className="px-4 py-2 bg-muted/50 hover:bg-primary/10 rounded-full text-sm font-medium text-foreground border border-primary/10 hover:border-primary/30 transition-all cursor-default"
+                    >
+                      {skill}
+                    </motion.span>
+                  ))}
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Certifications Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="mt-16"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold text-center mb-10">
+            Certifications & <GradientText>Recognition</GradientText>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: 'Shopify Development Badge', desc: 'Verified expert-level proficiency' },
+              { title: 'E-commerce Launch Success', desc: 'High-revenue client launches' },
+              { title: 'Site Performance Enhancement', desc: 'Improved LCP & SEO metrics' },
+              { title: 'PMP Certified', desc: 'Project Management Professional' },
+            ].map((cert, index) => (
+              <motion.div
+                key={cert.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.8 + index * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <Card className="p-6 text-center h-full border-primary/10 hover:border-primary/30 transition-all bg-card/50 backdrop-blur-sm">
+                  <div className="text-4xl mb-3">🏆</div>
+                  <h4 className="font-bold text-lg mb-2">{cert.title}</h4>
+                  <p className="text-sm text-muted-foreground">{cert.desc}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
+
+export default TechStack
