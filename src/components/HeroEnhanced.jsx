@@ -92,92 +92,206 @@ const HeroEnhanced = () => {
           className="max-w-6xl"
         >
           {/* Badge with Glow */}
-          <motion.div variants={staggerItem} className="mb-6">
+          <motion.div variants={staggerItem} className="mb-8">
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm relative"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)" }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-blue-500/40 bg-blue-500/15 backdrop-blur-md relative"
+              whileHover={{ 
+                scale: 1.08, 
+                boxShadow: "0 0 30px rgba(59, 130, 246, 0.6)",
+                y: -3,
+                transition: { duration: 0.3 }
+              }}
+              animate={{
+                boxShadow: [
+                  "0 0 20px rgba(59, 130, 246, 0.3)",
+                  "0 0 30px rgba(59, 130, 246, 0.5)",
+                  "0 0 20px rgba(59, 130, 246, 0.3)",
+                ],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                animate={{ 
+                  rotate: 360,
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{ 
+                  rotate: { duration: 3, repeat: Infinity, ease: "linear" },
+                  scale: { duration: 1.5, repeat: Infinity }
+                }}
               >
-                <Sparkles size={16} className="text-blue-400" />
+                <Sparkles size={18} className="text-blue-400" />
               </motion.div>
-              <span className="text-sm font-medium text-white">Open to Full-Time & Freelance Opportunities</span>
+              <span className="text-sm md:text-base font-semibold text-white tracking-wide">Open to Full-Time & Freelance</span>
             </motion.div>
           </motion.div>
 
           {/* Main Heading with Enhanced Gradient */}
-          <motion.div variants={staggerItem} className="mb-6">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-none tracking-tight">
-              <span className="block mb-2 text-white">Hi, I'm</span>
-              <GradientText className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+          <motion.div variants={staggerItem} className="mb-8">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black leading-[0.9] tracking-tighter">
+              <motion.span 
+                className="block mb-3 md:mb-4 text-white/90 font-light tracking-normal text-4xl md:text-5xl lg:text-6xl"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                Hi, I'm
+              </motion.span>
+              <motion.span
+                className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
+                style={{
+                  backgroundSize: '200% auto',
+                }}
+                animate={{
+                  backgroundPosition: ['0% center', '200% center'],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: 'linear',
+                }}
+              >
                 Anita Dantani
-              </GradientText>
+              </motion.span>
             </h1>
           </motion.div>
 
           {/* Animated Role with Text Generate Effect */}
-          <motion.div variants={staggerItem} className="mb-8">
-            <div className="flex items-center gap-4 text-3xl md:text-4xl lg:text-5xl font-light text-gray-300">
-              <span>I</span>
+          <motion.div variants={staggerItem} className="mb-10">
+            <div className="flex items-center gap-4 md:gap-6 text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-gray-200">
+              <span className="font-extralight">I</span>
               <motion.div
                 key={currentWord}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="min-w-[200px]"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -30, scale: 0.9 }}
+                transition={{ 
+                  duration: 0.6,
+                  type: 'spring',
+                  stiffness: 150,
+                }}
+                className="min-w-[250px] md:min-w-[350px]"
               >
-                <GradientText className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                <motion.span
+                  className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                  }}
+                >
                   {words[currentWord]}
-                </GradientText>
+                </motion.span>
               </motion.div>
             </div>
           </motion.div>
 
           {/* Job Title with Icon */}
-          <motion.div variants={staggerItem} className="mb-12">
-            <div className="flex items-start gap-4">
+          <motion.div variants={staggerItem} className="mb-14">
+            <div className="flex items-start gap-5">
               <motion.div 
                 className="flex gap-3 text-blue-400 mt-2"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 5, -5, 0],
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ scale: 1.2, rotate: 360, transition: { duration: 0.5 } }}
               >
-                <Code2 size={24} />
+                <Code2 size={28} strokeWidth={2} />
               </motion.div>
               <div>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-light leading-tight text-gray-200">
-                  Senior Shopify Full Stack Developer<br />
-                  & E-commerce Project Manager<br />
-                  <span className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
+                <h2 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-light leading-tight text-gray-100">
+                  <motion.span
+                    className="block mb-2"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    Senior Shopify Full Stack Developer
+                  </motion.span>
+                  <motion.span
+                    className="block mb-2 text-gray-300"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.7 }}
+                  >
+                    & E-commerce Project Manager
+                  </motion.span>
+                  <motion.span 
+                    className="block font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-3xl md:text-4xl lg:text-5xl mt-3"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.8, type: 'spring' }}
+                  >
                     Recognized by Shopify
-                  </span>
+                  </motion.span>
                 </h2>
               </div>
             </div>
           </motion.div>
 
           {/* Description with Text Generate Effect */}
-          <motion.div variants={staggerItem} className="mb-12 max-w-3xl">
-            <TextGenerateEffect
-              words="I build high-performing Shopify stores, custom apps, and checkout experiences that boost revenue, improve performance metrics like LCP, and streamline operations for fast-growing brands."
-              className="text-xl md:text-2xl text-gray-300 leading-relaxed"
-            />
+          <motion.div variants={staggerItem} className="mb-14 max-w-4xl">
+            <motion.p
+              className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed font-light"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+            >
+              I build{' '}
+              <span className="font-semibold text-white">high-performing Shopify stores</span>,{' '}
+              <span className="font-semibold text-white">custom apps</span>, and{' '}
+              <span className="font-semibold text-white">checkout experiences</span> that{' '}
+              <motion.span
+                className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400 font-bold"
+                animate={{ opacity: [0.8, 1, 0.8] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                boost revenue
+              </motion.span>,{' '}
+              improve performance, and streamline operations for fast-growing brands.
+            </motion.p>
           </motion.div>
 
           {/* CTA Buttons with Enhanced Effects */}
-          <motion.div variants={staggerItem} className="flex flex-wrap gap-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
+          <motion.div variants={staggerItem} className="flex flex-wrap gap-5 md:gap-6">
+            <motion.button
+              onClick={scrollToNext}
+              className="relative px-10 py-5 text-lg md:text-xl font-bold rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-2xl overflow-hidden group"
+              whileHover={{ 
+                scale: 1.08,
+                boxShadow: '0 25px 50px rgba(59, 130, 246, 0.5)',
+                y: -5,
+              }}
               whileTap={{ scale: 0.95 }}
+              animate={{
+                boxShadow: [
+                  '0 20px 40px rgba(59, 130, 246, 0.4)',
+                  '0 25px 50px rgba(147, 51, 234, 0.4)',
+                  '0 20px 40px rgba(59, 130, 246, 0.4)',
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
             >
-              <button
-                onClick={scrollToNext}
-                className="relative px-8 py-4 text-lg font-semibold rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-500/70 transition-all duration-300"
-              >
-                <span className="relative z-10">View My Work</span>
-              </button>
-            </motion.div>
+              <span className="relative z-10 flex items-center gap-2">
+                View My Work
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  →
+                </motion.span>
+              </span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"
+                initial={{ x: '100%' }}
+                whileHover={{ x: '0%' }}
+                transition={{ duration: 0.5 }}
+              />
+            </motion.button>
             
             <motion.a
               href="#contact"
@@ -185,11 +299,21 @@ const HeroEnhanced = () => {
                 e.preventDefault()
                 smoothScrollTo('contact', 80)
               }}
-              whileHover={{ scale: 1.05 }}
+              className="relative px-10 py-5 text-lg md:text-xl font-bold rounded-full border-3 border-blue-400 text-blue-400 hover:text-white backdrop-blur-md transition-all duration-300 overflow-hidden group"
+              whileHover={{ 
+                scale: 1.08,
+                borderColor: 'rgb(147, 51, 234)',
+                y: -5,
+              }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 text-lg font-semibold rounded-full border-2 border-blue-400 text-blue-400 hover:bg-blue-400/10 backdrop-blur-sm transition-all duration-300"
             >
-              Let's Talk
+              <span className="relative z-10">Let's Talk</span>
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500"
+                initial={{ scale: 0, opacity: 0 }}
+                whileHover={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              />
             </motion.a>
           </motion.div>
 

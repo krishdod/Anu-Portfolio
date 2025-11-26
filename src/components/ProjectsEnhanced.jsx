@@ -105,7 +105,7 @@ const ProjectsEnhanced = () => {
   ]
 
   return (
-    <section id="projects" className="relative py-20 bg-black overflow-hidden">
+    <section id="projects" className="relative section-padding bg-black overflow-hidden">
       {/* Sparkles Background */}
       <SparklesCore
         id="projectsparticles"
@@ -120,10 +120,10 @@ const ProjectsEnhanced = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={ref}>
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, ease: [0.6, 0.01, 0.05, 0.95] }}
+          className="text-center mb-20"
         >
           <motion.div
             className="inline-block mb-4 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-semibold backdrop-blur-sm"
@@ -141,9 +141,9 @@ const ProjectsEnhanced = () => {
 
         {/* Bento Grid */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.6, 0.01, 0.05, 0.95] }}
         >
           <BentoGrid className="max-w-7xl mx-auto">
             {projects.map((project, index) => (

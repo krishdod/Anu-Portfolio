@@ -2,11 +2,9 @@ import { useEffect } from 'react'
 import { CustomCursor } from './components/effects/CustomCursor'
 import { ScrollProgress } from './components/effects/ScrollProgress'
 import { Navigation } from './components/layout/Navigation'
-import Hero from './components/Hero'
 import HeroEnhanced from './components/HeroEnhanced'
 import About from './components/sections/About'
 import Work from './components/Work'
-import Projects from './components/Projects'
 import ProjectsEnhanced from './components/ProjectsEnhanced'
 import TechStack from './components/TechStack'
 import Contact from './components/Contact'
@@ -27,11 +25,9 @@ function App() {
       <CustomCursor />
       <Navigation />
       <main>
-        {/* Use HeroEnhanced for premium UI or Hero for original */}
         <HeroEnhanced />
         <About />
         <Work />
-        {/* Use ProjectsEnhanced for BentoGrid layout or Projects for classic grid */}
         <ProjectsEnhanced />
         <TechStack />
         <Contact />

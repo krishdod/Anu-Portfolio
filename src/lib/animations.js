@@ -5,8 +5,9 @@
 
 // Easing curves
 export const EASING = {
+  // keep x1 and x2 within [0,1] so the generated cubic-bezier is valid
   easeInOut: [0.6, -0.05, 0.01, 0.99],
-  easeOut: [0.6, 0.01, -0.05, 0.95],
+  easeOut: [0.6, 0.01, 0.05, 0.95],
   easeIn: [0.6, 0.04, 0.98, 0.34],
   spring: { type: 'spring', stiffness: 100, damping: 15 }
 }

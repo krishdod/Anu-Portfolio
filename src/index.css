@@ -61,21 +61,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  @media (min-width: 768px) {
-    body {
-      cursor: none;
-    }
-
-    a,
-    button,
-    [role='button'],
-    input,
-    textarea,
-    select {
-      cursor: none;
-    }
-  }
-
   html {
     scroll-behavior: smooth;
   }
@@ -87,23 +72,53 @@
   }
 
   .section-padding {
-    @apply py-24 px-4 sm:px-6 lg:px-8;
+    @apply py-32 md:py-40 lg:py-48 px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding-sm {
+    @apply py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8;
   }
 
   .container-width {
     @apply max-w-7xl mx-auto;
   }
 
+  .container-width-lg {
+    @apply max-w-screen-2xl mx-auto;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
 
+  /* Enhanced Typography Scale */
+  .text-display {
+    @apply text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none;
+  }
+
+  .text-heading {
+    @apply text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight;
+  }
+
+  .text-subheading {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug;
+  }
+
+  .text-body-lg {
+    @apply text-xl md:text-2xl lg:text-3xl font-light leading-relaxed;
+  }
+
+  /* Smooth Transitions */
   .transition-smooth {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .transition-smooth-slow {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .transition-bounce {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }
 
@@ -157,4 +172,26 @@
 /* Custom focus visible styles */
 *:focus-visible {
   @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+}
+
+/* Liquid-style animated background utility */
+.liquid-ether-bg {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(59,130,246,0.55), transparent 55%),
+    radial-gradient(circle at 80% 10%, rgba(236,72,153,0.45), transparent 55%),
+    radial-gradient(circle at 15% 80%, rgba(34,211,238,0.45), transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(129,140,248,0.5), transparent 55%);
+  animation: liquid-ether 22s ease-in-out infinite alternate;
+}
+
+@keyframes liquid-ether {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -5%, 0) scale(1.06);
+  }
+  100% {
+    transform: translate3d(-3%, 4%, 0) scale(1.02);
+  }
 }

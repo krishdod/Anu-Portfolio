@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Play, Award, Users, Briefcase, Code, Palette, Zap } from 'lucide-react'
+import { Award, Users, Briefcase, Code, Zap } from 'lucide-react'
 import { RevealOnScroll } from '../effects/RevealOnScroll'
 import { GradientText } from '../animated/GradientText'
 import { Card } from '../ui/card'
@@ -15,70 +15,39 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="section-padding relative overflow-hidden">
+    <section id="about" className="section-padding relative overflow-hidden bg-background">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-muted/20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/10" />
       
       <div className="container-width relative z-10">
         {/* Section Header */}
         <RevealOnScroll>
-          <div className="text-center mb-20">
+          <div className="text-center mb-24">
             <motion.div
-              className="inline-block mb-4 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold"
-              whileHover={{ scale: 1.05 }}
+              className="inline-block mb-6 px-5 py-2.5 rounded-full bg-primary/10 text-primary text-sm md:text-base font-semibold tracking-wide"
+              whileHover={{ scale: 1.08, y: -3 }}
+              transition={{ type: 'spring', stiffness: 400 }}
             >
               About Me
             </motion.div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6">
-              <GradientText>Where Shopify Expertise Meets E-commerce Growth</GradientText>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight">
+              <GradientText>Where Shopify Expertise</GradientText>
+              <br />
+              <GradientText>Meets E-commerce Growth</GradientText>
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-              I design, build, and scale Shopify experiences that improve performance, automate operations, and drive measurable business results
+            <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light">
+              I design, build, and scale{' '}
+              <span className="font-semibold text-foreground">Shopify experiences</span> that improve performance,{' '}
+              <span className="font-semibold text-foreground">automate operations</span>, and drive{' '}
+              <span className="font-semibold text-foreground">measurable business results</span>
             </p>
           </div>
         </RevealOnScroll>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {/* Large Video Card */}
-          <RevealOnScroll delay={0.1} className="lg:col-span-2 lg:row-span-2">
-            <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02}>
-              <Card className="relative h-full min-h-[400px] overflow-hidden group cursor-pointer bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-primary/20 hover:border-primary/40 transition-all duration-300">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
-                
-                {/* Play Button */}
-                <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <motion.div
-                    className="w-24 h-24 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20"
-                    whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.2)' }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Play size={40} className="text-white ml-2" fill="white" />
-                  </motion.div>
-                </div>
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/60 to-transparent">
-                  <h3 className="text-3xl font-bold text-white mb-2">
-                    2024 Design Showreel
-                  </h3>
-                  <p className="text-white/80 text-lg">Watch my creative journey</p>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-4 right-4">
-                  <motion.div
-                    className="w-16 h-16 rounded-full bg-white/5 backdrop-blur-sm"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                  />
-                </div>
-              </Card>
-            </Tilt>
-          </RevealOnScroll>
-
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
           {/* Stats Cards */}
-          <RevealOnScroll delay={0.2}>
+          <RevealOnScroll delay={0.1}>
             <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
               <Card className="p-8 h-full bg-gradient-to-br from-blue-500/5 to-blue-500/10 border-blue-500/20 hover:border-blue-500/40 transition-all">
                 <div className="flex flex-col items-center text-center">
@@ -98,7 +67,7 @@ const About = () => {
             </Tilt>
           </RevealOnScroll>
 
-          <RevealOnScroll delay={0.3}>
+          <RevealOnScroll delay={0.2}>
             <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
               <Card className="p-8 h-full bg-gradient-to-br from-purple-500/5 to-purple-500/10 border-purple-500/20 hover:border-purple-500/40 transition-all">
                 <div className="flex flex-col items-center text-center">
@@ -118,8 +87,7 @@ const About = () => {
             </Tilt>
           </RevealOnScroll>
 
-          {/* Skills Card */}
-          <RevealOnScroll delay={0.4} className="lg:col-span-1">
+          <RevealOnScroll delay={0.3}>
             <Tilt tiltMaxAngleX={10} tiltMaxAngleY={10}>
               <Card className="p-8 h-full bg-gradient-to-br from-green-500/5 to-green-500/10 border-green-500/20 hover:border-green-500/40 transition-all">
                 <div className="flex flex-col items-center text-center">
@@ -140,7 +108,7 @@ const About = () => {
         </div>
 
         {/* Skills Section */}
-        <RevealOnScroll delay={0.5}>
+        <RevealOnScroll delay={0.4}>
           <div className="mt-20">
             <h3 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Core <GradientText>Expertise</GradientText>

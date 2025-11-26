@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
 /**
- * RevealOnScroll component for revealing content on scroll
+ * RevealOnScroll component for revealing content on scroll with fade-in and upward movement
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Content to reveal
  * @param {Object} props.variants - Framer Motion variants
@@ -24,14 +24,19 @@ export function RevealOnScroll({
   })
 
   const defaultVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { 
+      opacity: 0, 
+      y: 60,
+      scale: 0.95
+    },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.8,
         delay,
-        ease: [0.6, -0.05, 0.01, 0.99]
+        ease: [0.6, 0.01, 0.05, 0.95]
       }
     }
   }
